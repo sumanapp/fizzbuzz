@@ -21,20 +21,77 @@
     <![endif]-->
 </head>
 
-<body>
-
-<div class="container">
-
-    <h1>Hello World!</h1>
-    <p class="lead">This is something!</p>
-
-</div><!-- /.container -->
-
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
+<script>
+function printOutput() {
+
+var limit = document.getElementById('input').value;
+var result = "";
+if(isNaN(limit)==false && limit>=1){
+  for (var x = 1; x <= limit; x++){
+
+	if(( x%3 == 0 ) && ( x%5 == 0)){
+    if(x==limit){
+		    result += 'FizzBuzz';
+    }else{
+      result += 'FizzBuzz, ';
+    }
+		continue;
+	}
+	else if(x%5 == 0){
+    if(x==limit){
+		result += 'Buzz';
+  }else{
+    result += 'Buzz, ';
+  }
+		continue;
+	}
+	else if( ( x%3 == 0 ) ){
+    if(x==limit){
+		    result += 'Fizz';
+    }else{
+        result += 'Fizz, ';
+    }
+		continue;
+	}else{
+    if(x==limit){
+      result +=  x;
+    }else{
+      result +=  x + ', ';
+    }
+
+	}
+}
+
+console.log(result);
+document.forms['myForm']['output'].value =result;
+}else{
+  console.log("Enter a valid positive integer greater than or equal to 1");
+  document.forms['myForm']['output'].value ="Enter a valid positive integer greater than or equal to 1";
+}
+}
+</script>
+<body>
+
+<div class="container">
+
+<p class="lead">Enter a number ( say N ) to print numbers from 1 to N. And print 'Fizz' for multiples of 3 and 'Buzz' for multiples of 5 and 'FizzBuzz' for multiples of 3 and 5 </p>
+<form class="form-horizontal" role="form" id="myForm">
+        <label for="inputType" class="col-sm-2 control-label">Enter Limit</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="input" placeholder="Input number"></input>
+		<br/><br/><br/>
+	    <button type="button" class="btn btn-primary btn-lg" onclick="printOutput()">Submit</button>
+		    <br/><br/>
+	    <textarea class="form-control" id="output"></textarea>
+    	</div>
+</form>
+</div><!-- /.container -->
 </body>
 </html>
